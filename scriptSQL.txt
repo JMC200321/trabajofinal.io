@@ -1,0 +1,17 @@
+use dbinstituto
+
+CREATE TABLE [dbo].[Universidad](
+ [Id_universidad] [int] IDENTITY(1,1) NOT NULL,
+ [Nombre] [nvarchar](50) NOT NULL,
+ [Ruc][nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_universidad] Primary Key ([Id_universidad])
+)
+GO
+
+CREATE TABLE [dbo].[DocentexUniversidad](
+ [Id_docente] [int] FOREIGN KEY REFERENCES Docente([Id_docente]) NOT NULL,
+ [Id_universidad] [int] FOREIGN KEY REFERENCES Universidad([Id_universidad]) NOT NULL,
+ [Detalle] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_DocentexUniversidad] Primary Key ([Id_docente], [Id_universidad])
+)
+GO
